@@ -119,7 +119,7 @@
       "aliases": ["res"]
     },
     "resource-custom": {
-      "factory": "./lib/resource-custom/resource.factory#main",
+      "factory": "./lib/resource-custom/resource-custom.factory#main",
       "description": "Create a Custom Nest resource.",
       "schema": "./lib/resource-custom/schema.json",
       "aliases": ["res-custom"]
