@@ -20,6 +20,7 @@ import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import * as pluralize from 'pluralize';
 import { DeclarationOptions, ModuleDeclarator, ModuleFinder } from '../..';
 import {
+  addDependencies,
   addPackageJsonDependency,
   getPackageJsonDependency,
   NodeDependencyType,
@@ -36,6 +37,13 @@ export function main(options: ResourceOptions): Rule {
     return branchAndMerge(
       chain([
         addMappedTypesDependencyIfApplies(options),
+        addDependencies([
+          {
+            name: 'class-validator',
+            version: '^0.14.0',
+            type: NodeDependencyType.Default,
+          },
+        ]),
         mergeSourceRoot(options),
         addDeclarationToModule(options),
         mergeWith(generate(options)),

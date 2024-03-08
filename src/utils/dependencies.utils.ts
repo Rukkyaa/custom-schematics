@@ -7,8 +7,9 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { Tree } from '@angular-devkit/schematics';
+import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 import { JSONFile } from './json-file.util';
+import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 
 const PKG_JSON_PATH = '/package.json';
 export enum NodeDependencyType {
@@ -66,4 +67,25 @@ export function getPackageJsonDependency(
   }
 
   return null;
+}
+
+export function addDependencies(dependencies: NodeDependency[]): Rule {
+  return (host: Tree, context: SchematicContext) => {
+    dependencies.forEach((dependency) => {
+      const existingDependency = getPackageJsonDependency(
+        host,
+        dependency.name,
+      );
+
+      if (!existingDependency) {
+        addPackageJsonDependency(host, {
+          type: dependency.type,
+          name: dependency.name,
+          version: dependency.version,
+        });
+      }
+    });
+
+    context.addTask(new NodePackageInstallTask());
+  };
 }
