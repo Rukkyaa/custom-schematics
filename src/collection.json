@@ -123,6 +123,12 @@
       "description": "Create a Custom Nest resource.",
       "schema": "./lib/resource-custom/schema.json",
       "aliases": ["res-custom"]
+    },
+    "s3-custom": {
+      "factory": "./lib/s3-custom/s3-custom.factory#main",
+      "description": "Create a Custom S3.",
+      "schema": "./lib/s3-custom/schema.json",
+      "aliases": ["s3"]
     }
   }
 }

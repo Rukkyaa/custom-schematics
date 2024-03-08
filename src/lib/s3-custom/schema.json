@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "SchematicsNestS3Custom",
+  "title": "Nest Custom S3 Options Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the s3.",
+      "default": "s3"
+    },
+    "region": {
+      "type": "string",
+      "description": "The S3 region.",
+      "default": "eu-west-3",
+      "enum": [
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-west-3",
+        "eu-south-1",
+        "eu-north-1",
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2",
+        "af-south-1",
+        "ap-east-1",
+        "ap-south-1",
+        "ap-northeast-3",
+        "ap-northeast-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-northeast-1",
+        "ca-central-1",
+        "cn-north-1",
+        "cn-northwest-1",
+        "me-south-1",
+        "sa-east-1"
+      ],
+      "x-prompt": {
+        "message": "Which AWS region do you want use?",
+        "type": "list",
+        "items": [
+          { "value": "eu-central-1", "label": "Europe (Frankfurt)" },
+          { "value": "eu-west-1", "label": "Europe (Ireland)" },
+          { "value": "eu-west-2", "label": "Europe (London)" },
+          { "value": "eu-west-3", "label": "Europe (Paris)" },
+          { "value": "eu-south-1", "label": "Europe (Milan)" },
+          { "value": "eu-north-1", "label": "Europe (Stockholm)" },
+          { "value": "us-east-1", "label": "US East (N. Virginia)" },
+          { "value": "us-east-2", "label": "US East (Ohio)" },
+          { "value": "us-west-1", "label": "US West (N. California)" },
+          { "value": "us-west-2", "label": "US West (Oregon)" },
+          { "value": "af-south-1", "label": "Africa (Cape Town)" },
+          { "value": "ap-east-1", "label": "Asia Pacific (Hong Kong)" },
+          { "value": "ap-south-1", "label": "Asia Pacific (Mumbai)" },
+          { "value": "ap-northeast-3", "label": "Asia Pacific (Osaka)" },
+          { "value": "ap-northeast-2", "label": "Asia Pacific (Seoul)" },
+          { "value": "ap-southeast-1", "label": "Asia Pacific (Singapore)" },
+          { "value": "ap-southeast-2", "label": "Asia Pacific (Sydney)" },
+          { "value": "ap-northeast-1", "label": "Asia Pacific (Tokyo)" },
+          { "value": "ca-central-1", "label": "Canada (Central)" },
+          { "value": "cn-north-1", "label": "China (Beijing)" },
+          { "value": "cn-northwest-1", "label": "China (Ningxia)" },
+          { "value": "me-south-1", "label": "Middle East (Bahrain)" },
+          { "value": "sa-east-1", "label": "South America (São Paulo)" }
+        ]
+      }
+    },
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The path to create the resource.",
+      "default": "shared",
+      "x-prompt": "What path would you like to create the s3?"
+    },
+    "sourceRoot": {
+      "type": "string",
+      "description": "Nest resource source root directory."
+    },
+    "skipImport": {
+      "type": "boolean",
+      "description": "Flag to skip the module import.",
+      "default": false
+    }
+  }
+}
