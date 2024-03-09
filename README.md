@@ -1,38 +1,28 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Custom NestJS Schematics
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/schematics.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/schematics.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/schematics.svg" alt="NPM Downloads" /></a>
-  <a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+This project is a fork of [NestJS Schematics](https://github.com/nestjs/schematics), the schematic collection for the [NestJS](http://nestjs.com/) framework. This fork includes additional custom schematics aimed at extending the functionality to better fit our specific development needs.
 
-## Description
+## Additional Schematics
 
-The Nest CLI is a command-line interface tool that helps you to initialize, develop, and maintain your Nest applications. It assists in multiple ways, including scaffolding the project, serving it in development mode, and building and bundling the application for production distribution. It embodies best-practice architectural patterns to encourage well-structured apps. Read more [here](https://docs.nestjs.com/cli/overview).
+In this fork, we have added two custom schematics:
+
+- `custom-resource`: This schematic generates a new resource with extended configurations and options tailored to our project's architecture and best practices.
+- `s3-custom`: This schematic provides templates for integrating Amazon S3 services more seamlessly into our NestJS applications, including customized service modules and controllers.
 
 ## Installation
 
+To use these custom schematics, you need to install this package instead of the standard `@nestjs/schematics`. You can install it using npm:
+
 ```bash
-$ npm install -g @nestjs/schematics
+$ npm i -g @axel-lbrt/schematics
 ```
 
 ## Usage
 
-Learn more in the [official documentation](https://docs.nestjs.com/).
+After installing the package, you can use the custom schematics in the same way as the standard NestJS schematics. But you have to specify the collection name as `@axel-lbrt/schematics` when running the schematic commands.
 
-## Stay in touch
+For example, to generate a new resource using the `custom-resource` schematic, you can run the following command:
 
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+```bash
+$ nest g @axel-lbrt/schematics:custom-resource <resource-name>
+```
