@@ -94,13 +94,30 @@ function addDeclarationToModule(options: S3Options): Rule {
     if (options.skipImport !== undefined && options.skipImport) {
       return tree;
     }
-    options.module = new ModuleFinder(tree).find({
-      name: options.name,
-      path: options.path as Path,
-    });
+    const moduleFinder = new ModuleFinder(tree);
+
+    const possiblePaths: Array<Path> = [
+      options.modulePath as Path,
+      join(options.modulePath as Path, 'app'),
+      options.path as Path,
+      join(options.sourceRoot as Path, 'app'),
+      join(options.path as Path, 'app'),
+    ];
+
+    for (const path of possiblePaths) {
+      const modulePath: Path = moduleFinder.find({
+        path,
+      });
+      if (modulePath) {
+        options.module = modulePath;
+        break;
+      }
+    }
+
     if (!options.module) {
       return tree;
     }
+
     const content = tree.read(options.module).toString();
     const declarator: ModuleDeclarator = new ModuleDeclarator();
     tree.overwrite(

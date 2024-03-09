@@ -59,6 +59,10 @@
         "message": "Would you like to generate CRUD entry points?",
         "type": "confirmation"
       }
+    },
+    "modulePath": {
+      "type": "string",
+      "description": "The path to the application module."
     }
   },
   "required": ["name"]

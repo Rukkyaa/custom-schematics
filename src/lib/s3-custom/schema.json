@@ -83,6 +83,10 @@
       "type": "boolean",
       "description": "Flag to skip the module import.",
       "default": false
+    },
+    "modulePath": {
+      "type": "string",
+      "description": "The path to the application module."
     }
   }
 }
