@@ -17,12 +17,24 @@ To use these custom schematics, you need to install this package instead of the 
 $ npm i -g @axel-lbrt/schematics
 ```
 
-## Usage
+## Setup
 
-After installing the package, you can use the custom schematics in the same way as the standard NestJS schematics. But you have to specify the collection name as `@axel-lbrt/schematics` when running the schematic commands.
+To use the custom-schematics, you have to put a `nest-cli.json` file in the root of your project with the following content:
 
-For example, to generate a new resource using the `custom-resource` schematic, you can run the following command:
+```json
+{
+  "collection": "@axel-lbrt/schematics",
+  "sourceRoot": "apps/backend/src",
+  "compilerOptions": {
+    "deleteOutDir": true
+  }
+}
+```
+
+# Usage
+
+You can now use the custom schematics in the same way as the standard NestJS schematics. For example, to generate a new resource, you can run:
 
 ```bash
-$ nest g @axel-lbrt/schematics:custom-resource <resource-name>
+$ nest g res-custom api/users --no-spec
 ```
