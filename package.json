@@ -1,6 +1,6 @@
 {
   "name": "@axel-lbrt/schematics",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A custom schematics collection for NestJS (forked from @nestjs/schematics)",
   "main": "dist/index.js",
   "files": [
