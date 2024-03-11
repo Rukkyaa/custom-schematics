@@ -14,7 +14,7 @@ In this fork, we have added two custom schematics:
 To use these custom schematics, you need to install this package instead of the standard `@nestjs/schematics`. You can install it using npm:
 
 ```bash
-$ npm i -g @axel-lbrt/schematics
+$ npm i -g @galadrim/schematics
 ```
 
 ## Setup
@@ -23,7 +23,7 @@ To use the custom-schematics, you have to put a `nest-cli.json` file in the root
 
 ```json
 {
-  "collection": "@axel-lbrt/schematics",
+  "collection": "@galadrim/schematics",
   "sourceRoot": "apps/backend/src",
   "compilerOptions": {
     "deleteOutDir": true
