@@ -8,8 +8,8 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
-import { JSONFile } from './json-file.util';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
+import { JSONFile } from './json-file.util';
 
 const PKG_JSON_PATH = '/package.json';
 export enum NodeDependencyType {
@@ -83,9 +83,8 @@ export function addDependencies(dependencies: NodeDependency[]): Rule {
           name: dependency.name,
           version: dependency.version,
         });
+        context.addTask(new NodePackageInstallTask());
       }
     });
-
-    context.addTask(new NodePackageInstallTask());
   };
 }
