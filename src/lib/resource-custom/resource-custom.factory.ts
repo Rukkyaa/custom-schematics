@@ -23,6 +23,7 @@ import {
   addDependencies,
   addPackageJsonDependency,
   getPackageJsonDependency,
+  NodeDependency,
   NodeDependencyType,
 } from '../../utils/dependencies.utils';
 import { normalizeToKebabOrSnakeCase } from '../../utils/formatting';
@@ -33,17 +34,27 @@ import { ResourceOptions } from './resource-custom.schema';
 export function main(options: ResourceOptions): Rule {
   options = transform(options);
 
+  const dependencies: NodeDependency[] = [
+    {
+      name: 'class-validator',
+      version: '^0.14.0',
+      type: NodeDependencyType.Default,
+    },
+  ];
+
+  if (options.nestjsPrisma) {
+    dependencies.push({
+      name: 'nestjs-prisma',
+      version: '^0.21.0',
+      type: NodeDependencyType.Default,
+    });
+  }
+
   return (tree: Tree, context: SchematicContext) => {
     return branchAndMerge(
       chain([
         addMappedTypesDependencyIfApplies(options),
-        addDependencies([
-          {
-            name: 'class-validator',
-            version: '^0.14.0',
-            type: NodeDependencyType.Default,
-          },
-        ]),
+        addDependencies(dependencies),
         mergeSourceRoot(options),
         addDeclarationToModule(options),
         mergeWith(generate(options)),

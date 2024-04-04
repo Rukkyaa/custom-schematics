@@ -63,6 +63,15 @@
     "modulePath": {
       "type": "string",
       "description": "The path to the application module."
+    },
+    "nestjsPrisma": {
+      "type": "boolean",
+      "description": "is NestJS Prisma?",
+      "default": false,
+      "x-prompt": {
+        "message": "Would you like to use NestJS Prisma?",
+        "type": "confirmation"
+      }
     }
   },
   "required": ["name"]

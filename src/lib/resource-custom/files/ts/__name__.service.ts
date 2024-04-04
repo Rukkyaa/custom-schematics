@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';<% if (crud) { %>
-import { PrismaService } from 'nestjs-prisma';
+<% if (nestjsPrisma) { %>import { PrismaService } from 'nestjs-prisma';<%} else { %>// IMPORT YOU PRISMA SERVICE<%}%>
 import { Create<%= singular(classify(name)) %>Dto } from './dto/create-<%= singular(name) %>.dto';
 import { DeleteMany<%= classify(name) %>Dto } from './dto/delete-many-<%= name %>.dto';
 import { Update<%= singular(classify(name)) %>Dto } from './dto/update-<%= singular(name) %>.dto';<% } else if (crud) { %>
